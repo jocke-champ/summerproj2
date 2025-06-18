@@ -66,3 +66,135 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Improved text visibility and contrast */
+.text-gray-600 {
+  color: rgb(17 24 39) !important; /* Very dark gray for excellent readability */
+}
+
+.text-gray-500 {
+  color: rgb(31 41 55) !important; /* Much darker gray for better readability */
+}
+
+.text-gray-400 {
+  color: rgb(55 65 81) !important; /* Darker gray for better readability */
+}
+
+/* Ensure excellent contrast for small text */
+.text-xs {
+  color: rgb(17 24 39) !important; /* Very dark for small text */
+  font-weight: 500; /* Slightly bolder for better visibility */
+}
+
+.text-sm {
+  color: rgb(31 41 55) !important; /* Very dark for small text */
+  font-weight: 400;
+}
+
+/* Better visibility for placeholder text */
+input::placeholder, textarea::placeholder {
+  color: rgb(107 114 128) !important;
+  opacity: 1;
+}
+
+/* Improved button text contrast */
+.bg-blue-600, .bg-green-600 {
+  color: white !important;
+  font-weight: 600;
+}
+
+/* Better contrast for borders and backgrounds */
+.border-gray-300 {
+  border-color: rgb(156 163 175) !important;
+}
+
+.bg-gray-50 {
+  background-color: rgb(249 250 251) !important;
+}
+
+.bg-gray-100 {
+  background-color: rgb(243 244 246) !important;
+}
+
+/* Force all gray text to be much darker */
+.text-gray-700, .text-gray-800, .text-gray-900 {
+  color: rgb(17 24 39) !important; /* Very dark for maximum readability */
+}
+
+/* Override any remaining light text colors */
+nav a, nav button {
+  color: rgb(31 41 55) !important; /* Dark navigation text */
+}
+
+nav a:hover, nav button:hover {
+  color: rgb(17 24 39) !important; /* Even darker on hover */
+}
+
+/* Make sure all headings and labels are very dark */
+h1, h2, h3, h4, h5, h6, label {
+  color: rgb(17 24 39) !important;
+}
+
+/* Darker text for all interactive elements */
+button, a {
+  color: inherit !important;
+}
+
+/* Specific overrides for common problematic elements */
+.font-medium, .font-semibold, .font-bold {
+  color: rgb(17 24 39) !important;
+}
+
+/* User selector specific fixes */
+.bg-blue-50, .bg-blue-100 {
+  color: rgb(17 24 39) !important; /* Dark text on light blue backgrounds */
+}
+
+.hover\:bg-blue-100:hover {
+  color: rgb(17 24 39) !important;
+}
+
+/* Make sure user selection buttons have very dark text */
+button[class*="bg-blue-50"], button[class*="bg-blue-100"] {
+  color: rgb(17 24 39) !important;
+  font-weight: 600 !important;
+}
+
+/* Comprehensive fix for all remaining light text */
+input, textarea, select {
+  color: rgb(17 24 39) !important; /* Very dark text in all inputs */
+}
+
+input[type="text"], input[type="email"], textarea, select {
+  color: rgb(17 24 39) !important;
+}
+
+/* Make sure all span and div text is dark enough */
+span, div, p {
+  color: inherit;
+}
+
+/* Override any remaining light colors that might slip through */
+.text-gray-300 {
+  color: rgb(75 85 99) !important; /* Much darker than default gray-300 */
+}
+
+/* Specific fixes for form elements and interactive text */
+.border, .rounded-lg, .focus\:outline-none {
+  color: rgb(17 24 39) !important;
+}
+
+/* Make sure disabled elements are still readable */
+.disabled\:bg-gray-300:disabled, .disabled\:cursor-not-allowed:disabled {
+  color: rgb(107 114 128) !important; /* Dark enough for disabled state */
+}
+
+/* Force very dark text for any remaining problematic elements */
+* {
+  -webkit-text-fill-color: inherit !important;
+}
+
+/* Ensure good contrast on all interactive elements */
+button:not([class*="bg-"]), a:not([class*="bg-"]) {
+  color: rgb(17 24 39) !important;
+}
