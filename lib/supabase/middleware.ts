@@ -40,10 +40,9 @@ export async function updateSession(request: NextRequest) {
   // issues with users being randomly logged out.
 
   // IMPORTANT: DO NOT REMOVE auth.getUser()
+  // We keep this for session management even though we don't use auth redirects
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  await supabase.auth.getUser();
 
   // Disable authentication redirects for our family hub app
   // We don't use Supabase authentication, just the database

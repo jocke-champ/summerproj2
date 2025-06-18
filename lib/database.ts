@@ -62,7 +62,7 @@ export async function createProject(project: Omit<Project, 'id' | 'createdAt' | 
 export async function updateProject(id: string, updates: Partial<Project>): Promise<Project | null> {
   const supabase = createClient()
   
-  const updateData: any = {}
+  const updateData: Record<string, unknown> = {}
   
   if (updates.title !== undefined) updateData.title = updates.title
   if (updates.description !== undefined) updateData.description = updates.description
@@ -161,7 +161,7 @@ export async function createShoppingList(list: Omit<ShoppingList, 'id' | 'create
 export async function updateShoppingList(id: string, updates: Partial<ShoppingList>): Promise<ShoppingList | null> {
   const supabase = createClient()
   
-  const updateData: any = {}
+  const updateData: Record<string, unknown> = {}
   
   if (updates.name !== undefined) updateData.name = updates.name
   if (updates.items !== undefined) updateData.items = JSON.stringify(updates.items)
