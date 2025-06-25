@@ -245,38 +245,38 @@ export default function ProjectDetailPage({ params }: Props) {
             value={newItem}
             onChange={(e) => setNewItem(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && addChecklistItem()}
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Lägg till uppgift..."
           />
           <button
             onClick={addChecklistItem}
             disabled={!newItem.trim()}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 flex items-center gap-2"
+            className="px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 flex items-center gap-2 min-h-[44px]"
           >
             <PlusIcon className="w-4 h-4" />
-            Lägg till
+            <span className="hidden sm:inline">Lägg till</span>
           </button>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-3">
           {project.checklist.map((item) => (
             <div key={item.id} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
               <button
                 onClick={() => toggleChecklistItem(item.id)}
-                className={`w-5 h-5 rounded border-2 flex items-center justify-center ${
+                className={`w-6 h-6 rounded border-2 flex items-center justify-center flex-shrink-0 ${
                   item.completed 
                     ? 'bg-green-600 border-green-600 text-white' 
                     : 'border-gray-300 hover:border-green-600'
                 }`}
               >
-                {item.completed && <CheckIcon className="w-3 h-3" />}
+                {item.completed && <CheckIcon className="w-4 h-4" />}
               </button>
               <span className={`flex-1 ${item.completed ? 'line-through text-gray-500' : 'text-gray-900'}`}>
                 {item.text}
               </span>
               <button
                 onClick={() => removeChecklistItem(item.id)}
-                className="text-red-600 hover:text-red-800 p-1"
+                className="text-red-600 hover:text-red-800 p-2 rounded-lg hover:bg-red-50 min-h-[44px] min-w-[44px] flex items-center justify-center"
               >
                 <XIcon className="w-4 h-4" />
               </button>
@@ -295,18 +295,18 @@ export default function ProjectDetailPage({ params }: Props) {
           Kommentarer ({project.comments.length})
         </h2>
 
-        <div className="flex gap-3 mb-6">
+        <div className="flex flex-col sm:flex-row gap-3 mb-6">
           <textarea
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
             rows={3}
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="flex-1 px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             placeholder="Skriv en kommentar..."
           />
           <button
             onClick={addComment}
             disabled={!newComment.trim()}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 self-start"
+            className="px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:bg-gray-300 self-start min-h-[44px]"
           >
             Kommentera
           </button>

@@ -117,61 +117,68 @@ export default function NewShoppingListPage() {
           </label>
           
           <div className="space-y-3 mb-4">
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="text"
                 value={newItem}
                 onChange={(e) => setNewItem(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addCustomItem())}
-                className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="flex-1 px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Varunamn..."
               />
-              <input
-                type="text"
-                value={newQuantity}
-                onChange={(e) => setNewQuantity(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addCustomItem())}
-                className="w-20 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-                placeholder="Antal"
-              />
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value as ShoppingCategory)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-              >
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
-                ))}
-              </select>
-              <button
-                type="button"
-                onClick={addCustomItem}
-                disabled={!newItem.trim()}
-                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-300 flex items-center gap-2"
-              >
-                <PlusIcon className="w-4 h-4" />
-              </button>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={newQuantity}
+                  onChange={(e) => setNewQuantity(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addCustomItem())}
+                  className="w-24 px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  placeholder="Antal"
+                />
+                <select
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value as ShoppingCategory)}
+                  className="px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                >
+                  {categories.map(category => (
+                    <option key={category} value={category}>{category}</option>
+                  ))}
+                </select>
+                <button
+                  type="button"
+                  onClick={addCustomItem}
+                  disabled={!newItem.trim()}
+                  className="px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-300 flex items-center gap-2 min-w-[44px]"
+                >
+                  <PlusIcon className="w-5 h-5" />
+                  <span className="hidden sm:inline">Lägg till</span>
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-4 mb-4">
-            {categories.map(category => (
-              <div key={category} className="border rounded-lg p-3">
-                <h4 className="font-medium text-sm mb-2">{category}</h4>
-                <div className="space-y-1">
-                  {quickAddItems[category].map(item => (
-                    <button
-                      key={item}
-                      type="button"
-                      onClick={() => addItem(item, category)}
-                      className="text-xs bg-gray-100 hover:bg-gray-200 px-2 py-1 rounded text-left w-full"
-                    >
-                      {item}
-                    </button>
-                  ))}
+          {/* Mobile-optimized quick add items */}
+          <div className="space-y-4 mb-4">
+            <h4 className="font-medium text-gray-900">Snabbtillägg per kategori:</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {categories.map(category => (
+                <div key={category} className="border rounded-lg p-4">
+                  <h4 className="font-medium text-base mb-3 text-gray-900">{category}</h4>
+                  <div className="grid grid-cols-2 gap-2">
+                    {quickAddItems[category].map(item => (
+                      <button
+                        key={item}
+                        type="button"
+                        onClick={() => addItem(item, category)}
+                        className="text-sm bg-gray-100 hover:bg-gray-200 active:bg-gray-300 px-3 py-2 rounded text-left w-full min-h-[44px] flex items-center transition-colors"
+                      >
+                        {item}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {items.length > 0 && (

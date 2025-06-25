@@ -26,11 +26,11 @@ export default function ProjectsPage() {
 
   return (
     <div className="space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-gray-900">Projekt</h1>
+      <div className="flex flex-col space-y-4 sm:flex-row sm:justify-between sm:items-center sm:space-y-0">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Projekt</h1>
         <Link 
           href="/projects/new" 
-          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+          className="flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 font-medium min-h-[44px]"
         >
           <PlusIcon className="w-4 h-4" />
           Nytt projekt
@@ -38,12 +38,12 @@ export default function ProjectsPage() {
       </div>
 
       {projects.length > 0 && (
-        <div className="flex gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
           <label className="text-sm font-medium text-gray-700">Sortera efter:</label>
           <select 
             value={sortBy} 
             onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-            className="text-sm border border-gray-300 rounded px-2 py-1"
+            className="px-3 py-2 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="date">Senast uppdaterad</option>
             <option value="progress">Framsteg</option>
@@ -56,10 +56,10 @@ export default function ProjectsPage() {
         <div className="grid gap-6">
           {sortedProjects.map((project) => (
             <Link key={project.id} href={`/projects/${project.id}`}>
-              <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                <div className="flex justify-between items-start mb-3">
-                  <h2 className="text-xl font-semibold text-gray-900">{project.title}</h2>
-                  <span className="text-2xl font-bold text-blue-600">{project.progress}%</span>
+              <div className="bg-white rounded-lg shadow-md p-4 sm:p-6 hover:shadow-lg transition-shadow">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 space-y-2 sm:space-y-0">
+                  <h2 className="text-lg sm:text-xl font-semibold text-gray-900">{project.title}</h2>
+                  <span className="text-xl sm:text-2xl font-bold text-blue-600">{project.progress}%</span>
                 </div>
                 
                 <p className="text-gray-600 mb-4">{project.description}</p>
@@ -71,8 +71,8 @@ export default function ProjectsPage() {
                   />
                 </div>
 
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <div className="flex items-center gap-4">
+                <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 text-sm text-gray-500">
+                  <div className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:gap-4 sm:space-y-0">
                     <div className="flex items-center gap-1">
                       <CalendarIcon className="w-4 h-4" />
                       <span>Uppdaterad {format(project.updatedAt, 'PP', { locale: sv })}</span>
@@ -82,7 +82,7 @@ export default function ProjectsPage() {
                       <span>{project.comments.length} kommentarer</span>
                     </div>
                   </div>
-                  <span>{project.checklist.filter(item => item.completed).length}/{project.checklist.length} uppgifter</span>
+                  <span className="font-medium">{project.checklist.filter(item => item.completed).length}/{project.checklist.length} uppgifter</span>
                 </div>
               </div>
             </Link>
@@ -94,7 +94,7 @@ export default function ProjectsPage() {
           <p className="text-gray-600 mb-6">Kom igång genom att skapa ditt första projekt!</p>
           <Link 
             href="/projects/new" 
-            className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700"
+            className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 font-medium"
           >
             <PlusIcon className="w-5 h-5" />
             Skapa projekt
