@@ -213,9 +213,10 @@ button:not([class*="bg-"]), a:not([class*="bg-"]) {
   input[type="text"], input[type="email"], input[type="password"], textarea, select {
     font-size: 16px !important;
     padding: 12px !important;
-    background-color: white !important;
-    border-color: rgb(209 213 219) !important;
-    color: rgb(17 24 39) !important;
+    background-color: rgb(255 255 255) !important; /* Pure white */
+    border-color: rgb(203 213 225) !important; /* Light gray border */
+    color: rgb(15 23 42) !important; /* Very dark text */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05) !important; /* Subtle inner shadow */
   }
   
   /* Better touch feedback */
@@ -270,19 +271,36 @@ button:not([class*="bg-"]), a:not([class*="bg-"]) {
   }
 }
 
-/* Ensure proper light mode input styling */
+/* Ensure proper light mode input styling - Pure white backgrounds */
 input[type="text"], input[type="email"], input[type="password"], textarea, select {
-  background-color: white !important;
-  border-color: rgb(209 213 219) !important;
-  color: rgb(17 24 39) !important;
+  background-color: rgb(255 255 255) !important; /* Pure white */
+  border-color: rgb(203 213 225) !important; /* Light slate border */
+  color: rgb(15 23 42) !important; /* Very dark slate text */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05) !important; /* Subtle depth */
 }
 
-/* Focus states for inputs */
+/* Alternative very light gray option (uncomment if preferred) */
+/*
+input[type="text"], input[type="email"], input[type="password"], textarea, select {
+  background-color: rgb(248 250 252) !important;
+  border-color: rgb(203 213 225) !important;
+  color: rgb(15 23 42) !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+*/
+
+/* Focus states for inputs - maintain white background */
 input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, 
 textarea:focus, select:focus {
-  background-color: white !important;
-  border-color: rgb(59 130 246) !important;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+  background-color: rgb(255 255 255) !important; /* Keep white on focus */
+  border-color: rgb(59 130 246) !important; /* Blue focus border */
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), inset 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Placeholder text styling */
+input::placeholder, textarea::placeholder {
+  color: rgb(100 116 139) !important; /* Medium gray placeholder */
+  opacity: 1 !important;
 }
 
 /* High DPI display optimizations */
@@ -319,20 +337,26 @@ textarea:focus, select:focus {
 @media (prefers-color-scheme: dark) {
   /* Override light mode styling in dark mode */
   input[type="text"], input[type="email"], input[type="password"], textarea, select {
-    background-color: rgb(31 41 55) !important;
-    border-color: rgb(75 85 99) !important;
-    color: rgb(243 244 246) !important;
+    background-color: rgb(30 41 59) !important; /* Dark slate background */
+    border-color: rgb(71 85 105) !important; /* Slate border */
+    color: rgb(248 250 252) !important; /* Light text */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2) !important;
   }
   
   /* Focus states in dark mode */
   input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, 
   textarea:focus, select:focus {
-    background-color: rgb(31 41 55) !important;
+    background-color: rgb(30 41 59) !important;
     border-color: rgb(59 130 246) !important;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2), inset 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+  }
+  
+  /* Dark mode placeholder */
+  input::placeholder, textarea::placeholder {
+    color: rgb(148 163 184) !important;
   }
   
   button {
-    border-color: rgb(75 85 99) !important;
+    border-color: rgb(71 85 105) !important;
   }
 }
