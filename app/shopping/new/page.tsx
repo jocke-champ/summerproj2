@@ -117,28 +117,31 @@ export default function NewShoppingListPage() {
           </label>
           
           <div className="space-y-3 mb-4">
-            <div className="flex flex-col sm:flex-row gap-2">
+            <div className="space-y-3 sm:space-y-0 sm:flex sm:gap-2">
+              {/* Main item input - full width */}
               <input
                 type="text"
                 value={newItem}
                 onChange={(e) => setNewItem(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addCustomItem())}
-                className="flex-1 px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="w-full sm:flex-1 px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Varunamn..."
               />
-              <div className="flex gap-2">
+              
+              {/* Secondary inputs row - stack on mobile */}
+              <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:gap-2">
                 <input
                   type="text"
                   value={newQuantity}
                   onChange={(e) => setNewQuantity(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addCustomItem())}
-                  className="w-24 px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full sm:w-24 px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                   placeholder="Antal"
                 />
                 <select
                   value={selectedCategory}
                   onChange={(e) => setSelectedCategory(e.target.value as ShoppingCategory)}
-                  className="px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="w-full sm:w-auto px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
                 >
                   {categories.map(category => (
                     <option key={category} value={category}>{category}</option>
@@ -148,10 +151,10 @@ export default function NewShoppingListPage() {
                   type="button"
                   onClick={addCustomItem}
                   disabled={!newItem.trim()}
-                  className="px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-300 flex items-center gap-2 min-w-[44px]"
+                  className="w-full sm:w-auto px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-300 flex items-center justify-center gap-2 min-h-[48px] font-medium"
                 >
                   <PlusIcon className="w-5 h-5" />
-                  <span className="hidden sm:inline">Lägg till</span>
+                  <span>Lägg till</span>
                 </button>
               </div>
             </div>

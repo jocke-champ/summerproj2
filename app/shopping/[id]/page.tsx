@@ -218,40 +218,45 @@ export default function ShoppingListDetailPage({ params }: Props) {
       <div className="bg-white rounded-lg shadow-md p-6">
         <h2 className="text-xl font-semibold mb-4">Lägg till vara</h2>
         
-        <div className="flex gap-2">
+        <div className="space-y-3">
+          {/* Main item input - full width on mobile */}
           <input
             type="text"
             value={newItem}
             onChange={(e) => setNewItem(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && addItem()}
-            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
             placeholder="Varunamn..."
           />
-          <input
-            type="text"
-            value={newQuantity}
-            onChange={(e) => setNewQuantity(e.target.value)}
-            onKeyPress={(e) => e.key === 'Enter' && addItem()}
-            className="w-20 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-            placeholder="Antal"
-          />
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value as ShoppingCategory)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-          >
-            {categories.map(category => (
-              <option key={category} value={category}>{category}</option>
-            ))}
-          </select>
-          <button
-            onClick={addItem}
-            disabled={!newItem.trim()}
-            className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-300 flex items-center gap-2"
-          >
-            <PlusIcon className="w-4 h-4" />
-            Lägg till
-          </button>
+          
+          {/* Secondary inputs - stack on mobile, row on larger screens */}
+          <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:gap-2">
+            <input
+              type="text"
+              value={newQuantity}
+              onChange={(e) => setNewQuantity(e.target.value)}
+              onKeyPress={(e) => e.key === 'Enter' && addItem()}
+              className="w-full sm:w-24 px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Antal"
+            />
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value as ShoppingCategory)}
+              className="w-full sm:w-auto px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              {categories.map(category => (
+                <option key={category} value={category}>{category}</option>
+              ))}
+            </select>
+            <button
+              onClick={addItem}
+              disabled={!newItem.trim()}
+              className="w-full sm:w-auto px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:bg-gray-300 flex items-center justify-center gap-2 min-h-[48px] font-medium"
+            >
+              <PlusIcon className="w-5 h-5" />
+              Lägg till
+            </button>
+          </div>
         </div>
       </div>
 
